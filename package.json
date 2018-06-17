@@ -1,0 +1,20 @@
+{
+	"name": "es6-maven",
+	"version": "0.0.1",
+	"private": true,
+	"devDependencies": {
+		"babel-loader": "^8.0.0-beta.3",
+		"@babel/runtime": "^7.0.0-beta.51",
+		"@babel/plugin-transform-runtime": "^7.0.0-beta.51",
+		"@babel/core": "^7.0.0-beta.51",
+		"@babel/preset-env": "^7.0.0-beta.51",
+		"eslint": "^4.19.1",
+		"webpack": "^4.12.0",
+		"webpack-cli": "^3.0.8"
+	},
+	"dependencies": {},
+	"scripts": {
+		"webpack": "webpack",
+		"eslint": "eslint"
+	}
+}
