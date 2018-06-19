@@ -1,21 +1,26 @@
-const path = require('path');
-const resources = path.resolve(__dirname, "src/main/resources");
+const path = require("path");
+const resources = "./src/main/resources";
+
+const components = ["es6-example.js"]
+	.reduce((acc, filename) => {
+		acc[filename] = filename;
+		return acc;
+	}, {});
 
 module.exports = {
 	mode: "development",
-	entry: [
-		path.resolve(resources, "es6-example.js")
-	],
+	context: path.resolve(resources),
+	entry: components,
 	output: {
-		path: path.resolve(__dirname, "target/generated-resources"),
-		filename: "[name].js",
+		path: path.resolve(__dirname, "target/classes"),
+		filename: "[name].bundle.js",
 		libraryTarget: "window"
 	},
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
+				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
 					options: {
