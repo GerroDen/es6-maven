@@ -1,5 +1,6 @@
 const path = require("path");
-const resources = "./src/main/resources";
+const WrmPlugin = require("atlassian-webresource-webpack-plugin");
+const resources = "src/main/resources";
 
 const components = ["es6-example.js"]
 	.reduce((acc, filename) => {
@@ -16,6 +17,13 @@ module.exports = {
 		filename: "[name].bundle.js",
 		libraryTarget: "window"
 	},
+	plugins: [
+		new WrmPlugin({
+			pluginKey: 'de.wi.lkimmel.es6-maven',
+			amdProvider: "confluence.web.resources:almond",
+			xmlDescriptors: path.resolve(__dirname, "target/classes", 'META-INF', 'plugin-descriptors', 'wr-defs.xml')
+		}),
+	],
 	module: {
 		rules: [
 			{
