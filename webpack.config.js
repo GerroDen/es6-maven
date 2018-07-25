@@ -3,7 +3,8 @@ const resources = "./src/main/resources";
 
 const components = ["es6-example.js"]
 	.reduce((acc, filename) => {
-		acc[filename] = filename;
+		var module = /\/?([\w\-]+)\.\w+$/.exec(filename)[1];
+		acc[module] = filename;
 		return acc;
 	}, {});
 
